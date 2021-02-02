@@ -1,6 +1,6 @@
 {
-  "homepage": "https://xbot13.github.io/SameBrickSupport/",
-  "name": "same-brick",
+  "homepage": "https://xbot13.github.io/same-block/",
+  "name": "same-block",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
