@@ -22,26 +22,27 @@ const IOSSwitch = withStyles((theme: Theme) =>
             padding: 1,
             '&$checked': {
                 transform: 'translateX(16px)',
-                color: theme.palette.common.white,
+                color: theme.palette.background.default,
                 '& + $track': {
-                    backgroundColor: theme.palette.primary,
+                    backgroundColor: theme.palette.secondary.main,
                     opacity: 1,
                     border: 'none',
                 },
             },
             '&$focusVisible $thumb': {
-                color: theme.palette.primary,
+                color: theme.palette.secondary.main,
                 border: '6px solid #fff',
             },
         },
         thumb: {
             width: 24,
+            backgroundColor: theme.palette.background.default,
             height: 24,
         },
         track: {
             borderRadius: 26 / 2,
-            border: `1px solid ${theme.palette.primary}`,
-            backgroundColor: theme.palette.primary.dark,
+            border: `1px solid ${theme.palette.background.default}`,
+            backgroundColor: theme.palette.secondary.main,
             opacity: 1,
             transition: theme.transitions.create(['background-color', 'border']),
         },
