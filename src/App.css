@@ -1,14 +1,13 @@
 * {
-  
-    --color-blue: #00293D;
-    --color-indigo: #004266;
-    --color-wine: #6b2c39;
-    --color-red: #d62828;
-    --color-orange: #f77f00;
-    --color-yellow: #fcbf49;
-    --color-meringue: #eae2b7;
-    --color-bg: var(--color-blue);
-    --color-text: var(--color-yellow);
+  --color-blue: #00293d;
+  --color-indigo: #004266;
+  --color-wine: #6b2c39;
+  --color-red: #d62828;
+  --color-orange: #f77f00;
+  --color-yellow: #fcbf49;
+  --color-meringue: #eae2b7;
+  --color-bg: var(--color-blue);
+  --color-text: var(--color-yellow);
 }
 
 body {
@@ -23,11 +22,11 @@ body {
   width: 100vw;
   display: flex;
   flex: 1;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 .Taps {
-  flex: 1; 
+  flex: 1;
   display: flex;
   flex-direction: row;
 }
@@ -42,45 +41,54 @@ body {
 .active {
   background-color: var(--color-text);
   border-bottom: 2px solid var(--color-blue);
-  color: var(--color-indigo)
+  color: var(--color-indigo);
+}
+
+.View {
+  flex: 2;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  overflow-y: scroll;
+  overflow-x: auto;
+  padding: 2em;
 }
 
 .Content {
-  flex: 2; 
-  display: flex;
-  height: 100vh; 
-  justify-content: center; 
-  overflow: scroll; 
-  padding: 2em
+  flex-direction: column;
 }
 
-.Header { 
-  flex: 1; 
+.screen {
+  min-height: 100vh;
+}
+
+.Header {
+  flex: 1;
   max-height: 238px;
-  display: 'flex'; 
-  justify-content: "center"; 
-  flex-direction: "column" 
+  display: "flex";
+  justify-content: "center";
+  flex-direction: "column";
 }
 
 .Logo {
-  flex: 1; 
+  flex: 1;
   max-height: 200px;
-  display: flex; 
-  align-items: center; 
-  flex-direction: column 
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 @media (min-width: 420px) {
   .App {
     flex-direction: row;
-  
   }
 
   .Taps {
     flex-direction: column;
   }
 
-  .Logo, .Header{
+  .Logo,
+  .Header {
     max-height: none;
   }
 
@@ -89,8 +97,6 @@ body {
     border-bottom: 0px;
   }
 }
-
-
 
 .dark {
   background-color: var(--color-blue);
@@ -102,10 +108,9 @@ body {
   color: var(--color-blue);
 }
 
-
 .support {
   flex-direction: column;
   display: flex;
   justify-content: center;
-  flex: 1
+  flex: 1;
 }

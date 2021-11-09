@@ -1,12 +1,12 @@
 import React from 'react'
-import { Grid, Typography, Button } from '@material-ui/core';
-import { Link } from "react-router-dom";
+import { Typography, Button } from '@material-ui/core';
 
 interface Props {
-
+    priv: React.MutableRefObject<HTMLDivElement>,
+    sup: React.MutableRefObject<HTMLDivElement>,
 }
 
-const HomeScreen = (props: Props) => {
+const HomeScreen = ({ priv, sup }: Props) => {
     return (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flex: 1, flexDirection: "column" }}>
 
@@ -18,18 +18,18 @@ const HomeScreen = (props: Props) => {
 
             <div style={{ display: "flex", flexDirection: "column", padding: 20 }}>
                 <div style={{ padding: 10 }}>
-                    <Link to={"/support"}>
-                        <Button variant="contained" color="primary" >
-                            I need Support
+
+                    <Button onClick={() => sup?.current.scrollIntoView()} variant="contained" color="primary" >
+                        I need Support
                     </Button>
-                    </Link>
+
                 </div>
                 <div style={{ padding: 10 }}>
-                    <Link to={"/privacy"}>
-                        <Button variant="contained" color="primary">
-                            Look at the Privacy statement
+
+                    <Button onClick={() => priv?.current.scrollIntoView()} variant="contained" color="primary" >
+                        Look at the Privacy statement
                     </Button>
-                    </Link>
+
                 </div>
             </div>
         </div>

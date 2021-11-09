@@ -63,7 +63,7 @@ const SupportScreen = (props: Props) => {
         let err: typeof error = { ...error }
         const emailV = emailValidation(email)
 
-        if (emailV == true) {
+        if (emailV === true) {
             err = {
                 ...err, email: {
                     valid: true,
@@ -80,7 +80,7 @@ const SupportScreen = (props: Props) => {
             }
         }
 
-        if (topic == '') {
+        if (topic === '') {
             err = {
                 ...err, topic: {
                     valid: false,
@@ -99,7 +99,7 @@ const SupportScreen = (props: Props) => {
         }
 
 
-        if (question == null || question == '') {
+        if (question === null || question === '') {
             err = {
                 ...err, question: {
                     valid: false,

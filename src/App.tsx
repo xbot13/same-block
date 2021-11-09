@@ -1,16 +1,16 @@
 import './App.css';
-import React, { useState, useMemo } from 'react';
+import React, { useRef, useState } from 'react';
 import IOSSwitch from './components/IOSSwitch'
 import {
   createMuiTheme,
   ThemeProvider,
 } from '@material-ui/core/styles';
-import { BrowserRouter as Router, Link, NavLink, Route } from "react-router-dom";
 import PrivacyScreen from './screens/PrivacyScreen';
 import SupportScreen from './screens/SupportScreen';
-import { AppBar, Box, Grid, Typography, Toolbar, CssBaseline, Button, Container, Tabs, Tab } from '@material-ui/core';
+import { Typography, CssBaseline, Button } from '@material-ui/core';
 import HomeScreen from './screens/HomeScreen';
 import { Logo } from './Logo'
+import StoreScreen from './screens/StoreScreen';
 
 const color = {
   blue: "#00293D",
@@ -26,7 +26,7 @@ const color = {
 function App() {
 
   const [theme, setTheme] = useState(false)
-
+  const [page, setPage] = useState<"home"|"priv"|"sup"|"app">("home")
 
   const UiTheme = createMuiTheme({
     palette: {
@@ -48,56 +48,88 @@ function App() {
     },
   })
 
-  const a11yProps = (index: any) => {
-    return {
-      id: `vertical-tab-${index}`,
-      'aria-controls': `vertical-tabpanel-${index}`,
-    };
-  }
+  const home = useRef<HTMLDivElement>(null!)
+  const sup = useRef<HTMLDivElement>(null!)
+  const priv = useRef<HTMLDivElement>(null!)
 
   return (
     <ThemeProvider theme={UiTheme}>
-      <Router >
-        <CssBaseline />
+
+      <CssBaseline />
 
 
-        {/* <Nav {...{ theme, setTheme }} /> */}
-        <div className="App">
-          <div className="Header" style={{ backgroundColor: theme ? color.wine : color.orange }}>
-
-
-
-            <div className="Logo">
-              <Logo light={!theme} height={"auto"} width={"90%"} />
-              <Typography variant="h4" style={{ transform: "translate(-50%, 0);" }}>SAME BLOCKS</Typography>
-            </div>
-
-            <div className="Taps">
-              <NavLink to={"/"} exact className="Tab" ><Button>Home</Button></NavLink>
-              <NavLink to={"/support"} className="Tab" ><Button>Support</Button></NavLink>
-              <NavLink to={"/privacy"} className="Tab" ><Button>Privacy</Button></NavLink>
-            </div>
+      {/* <Nav {...{ theme, setTheme }} /> */}
+      <div className="App">
+        <div className="Header" style={{ backgroundColor: theme ? color.wine : color.orange }}>
 
 
 
+          <div className="Logo">
+            <Logo light={!theme} height={"auto"} width={"90%"} />
+            <Typography variant="h4" style={{ transform: "translate(-50%, 0);" }}>SAME BLOCKS</Typography>
+          </div>
+
+          <div className="Taps">
+
+            <Button 
+              onClick={() => {
+                setPage("home")
+                home.current.scrollIntoView()
+              }}> 
+              Home
+            </Button>
+
+            <Button 
+              onClick={() => {
+                sup.current.scrollIntoView()
+                }}>
+                  Support
+            </Button>
+
+
+            <Button 
+              onClick={() => {
+                priv.current.scrollIntoView()
+                }}>
+                  Privacy
+            </Button>
 
           </div>
 
 
-          <div className="Content">
-            <div style={{ position: "absolute", top: "2em", right: "2em" }}>
-              <IOSSwitch checked={theme} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTheme(!theme)} />
-            </div>
-            <Route exact={true} path={"/"} component={HomeScreen} />
 
-            <Route path={"/privacy"} component={PrivacyScreen} />
-            <Route path={"/support"} component={SupportScreen} />
 
-          </div>
         </div>
 
 
-      </Router>
+        <div className="View">
+          <div style={{ position: "absolute", top: "2em", right: "2em" }}>
+            <IOSSwitch checked={theme} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTheme(!theme)} />
+          </div>
+
+          <div className="Content">
+            <div className="screen" ref={home}>
+              <HomeScreen priv={priv} sup={sup} />
+            </div>
+
+            <div className="screen" ref={priv} id="privacypolicy">
+              <PrivacyScreen />
+            </div>
+
+            <div className="screen" ref={sup} id="support">
+              <SupportScreen />
+            </div>
+
+            <div className="screen" ref={sup} id="store">
+              <StoreScreen />
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
     </ThemeProvider>
   );
 }

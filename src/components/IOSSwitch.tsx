@@ -1,4 +1,3 @@
-
 import Switch, { SwitchClassKey, SwitchProps } from '@material-ui/core/Switch';
 import { withStyles, Theme, createStyles } from '@material-ui/core/styles';
 
